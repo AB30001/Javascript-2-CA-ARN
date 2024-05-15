@@ -1,8 +1,8 @@
-import { register } from "../auth/register.mjs";
+import { login } from "../auth/login.mjs";
 
-export function setRegisterFormListener () {
+export function setLoginFormListener () {
 
-    const form = document.querySelector("#registerForm");
+    const form = document.querySelector("#loginForm");
 
 
 
@@ -16,10 +16,11 @@ if (form) {
         
         
     //need to send it to the API
-        register(profile)
+        login(profile)
     })
 
 
 }
+
 
 }

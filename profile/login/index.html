@@ -41,11 +41,11 @@
                         <form id="loginForm">
                             <div class="mb-3">
                                 <label for="loginEmail" class="form-label">Email address</label>
-                                <input type="email" class="form-control" id="loginEmail" placeholder="Enter email" required>
+                                <input type="email" class="form-control" name="email" required pattern="^[\w\-.]+@(stud\.)?noroff\.no$" title="Only @(stud.)noroff.no are allowed to register">
                             </div>
                             <div class="mb-3">
                                 <label for="loginPassword" class="form-label">Password</label>
-                                <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+                                <input type="password" class="form-control" name="password" required minlength="8">
                             </div>
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-primary">Login</button>
