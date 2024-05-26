@@ -1,9 +1,12 @@
 
 
-import * as listeners from "./api/handlers/index.mjs"
-import * as templates from "./api/templates/index.mjs"
-import * as postMethods from "./api/posts/index.mjs"
+import { setRegisterFormListener } from "./api/handlers/register.mjs";
+import { setLoginFormListener } from "./api/handlers/login.mjs";
 
+
+import * as templates from "./api/templates/post.mjs";
+import * as postMethods from "./api/posts/index.mjs"
+//import { renderPostTemplates } from "./api/templates/post.mjs";
 
 
 
@@ -20,10 +23,21 @@ if (path === '/profile/login/') {
 }
 
 
+async function testTemplate() {
+    try {
+        const posts = await postMethods.getPosts();
+        const container = document.querySelector("#post");
+        if (container) {
+            templates.renderPostTemplates(posts, container);
+        } else {
+            console.error("Container with ID 'post' not found");
+        }
+    } catch (error) {
+        console.error("Error fetching or rendering posts:", error);
+    }
+}
 
-
-
-
+testTemplate();
 
 
 //async function testTemplate() {

@@ -1,6 +1,5 @@
 import { API_SOCIAL_URL } from "../constants.mjs";
-
-import { authFetch } from "../posts/authFetch.mjs";
+import { authFetch } from "../../authFetch.mjs";
 
 const action = "/posts";
 const method = "put";
