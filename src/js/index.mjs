@@ -1,16 +1,13 @@
+import * as listeners from "./api/handlers/index.mjs"
+import * as templates from "./api/templates/index.mjs";
+import * as postMethods from "./api/posts/index.mjs";
 
+let path = location.pathname;
 
-import { setRegisterFormListener } from "./api/handlers/register.mjs";
-import { setLoginFormListener } from "./api/handlers/login.mjs";
-
-
-import * as templates from "./api/templates/post.mjs";
-import * as postMethods from "./api/posts/index.mjs"
-//import { renderPostTemplates } from "./api/templates/post.mjs";
-
-
-
-const path = location.pathname;
+// Normalize path by removing 'index.html' if present
+if (path.endsWith('index.html')) {
+    path = path.substring(0, path.length - 'index.html'.length);
+}
 
 if (path === '/profile/login/') {
     listeners.setLoginFormListener();
@@ -19,31 +16,17 @@ if (path === '/profile/login/') {
 } else if (path === '/post/create/') {
     listeners.setCreatePostFormListener();
 } else if (path === '/post/edit/') {
-    listeners.setUpdatePostListener();
+    listeners.setUpdatePostListener();  // Corrected function name
 }
 
 
 async function testTemplate() {
-    try {
-        const posts = await postMethods.getPosts();
-        const container = document.querySelector("#post");
-        if (container) {
-            templates.renderPostTemplates(posts, container);
-        } else {
-            console.error("Container with ID 'post' not found");
-        }
-    } catch (error) {
-        console.error("Error fetching or rendering posts:", error);
-    }
+    const posts = await postMethods.getPosts();
+    const container = document.querySelector("#post");
+    templates.renderPostTemplates(posts, container);
 }
 
 testTemplate();
 
 
-//async function testTemplate() {
-   // const posts = await postMethods.getPosts();
-  //  const container = document.querySelector("#post");
-  // templates.renderPostTemplates(posts, container);
-//}
 
-//testTemplate()
