@@ -6,7 +6,6 @@ export function setUpdatePostListener() {
   const url = new URL(location.href);
   const id = url.searchParams.get("id");
 
-
   if (form) {
     form.addEventListener("submit", (event) => {
       event.preventDefault();

@@ -5,17 +5,16 @@ const action = "/profiles";
 const method = "put";
 
 export async function updateProfile(profileData) {
-    if (!profileData.name) {
-        throw new Error("Update requires a name");
-    }
+  if (!profileData.name) {
+    throw new Error("Update requires a name");
+  }
 
-    const updateProfileURL = `${API_SOCIAL_URL}${action}/${profileData.name}/media`;
+  const updateProfileURL = `${API_SOCIAL_URL}${action}/${profileData.name}/media`;
 
-    const response = await authFetch(updateProfileURL, {
-        method,
-        body: JSON.stringify(profileData),
-    });
+  const response = await authFetch(updateProfileURL, {
+    method,
+    body: JSON.stringify(profileData),
+  });
 
-    return await response.json();
+  return await response.json();
 }
-
