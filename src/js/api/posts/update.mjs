@@ -14,7 +14,7 @@ export async function updatePost(postData) {
     const response = await authFetch(updatePostURL, {
         method,
         body: JSON.stringify(postData)
-    });
+    })
 
     return await response.json();
 }
